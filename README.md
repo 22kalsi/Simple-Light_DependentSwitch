@@ -1,13 +1,15 @@
+
 //Simple_NightOrDay_Sensor
 //With the help of arduino nano and the ldr.
+
 #include <LiquidCrystal.h>
 #include "DHT.h"
 
-int RELAY =  11;  // for first relay 
+int RELAY =  11;  // for first relay
 int RELAY1 =  10; // for second relay with different turn on instance
 int ON =  A1;  // Green Led
 int CALIBRATE = A2; // potentiometer for changing on/off timming.
-int LDR = A0;  // input 
+int LDR = A0;  // input
 int OFF = A0;  // Red Led
 //int LM35 =  9;  // temprature sensor
 #define DHTPIN 9  // temprature sensor
@@ -153,26 +155,26 @@ void setup() {
             lcd.print("L1- OFF");
             digitalWrite (RELAY1 , LOW);
           }
-          if (average <= 20) {
+            if (average <= 20) {
             lcd.setCursor(0, 1);
             lcd.print("        ");
             lcd.setCursor(0, 1);
             lcd.print("L1- ON");
             digitalWrite (RELAY1 , HIGH);
           }
-          if (average <= 60) {
-          lcd.setCursor(9, 1);
+            if (average <= 60) {
+            lcd.setCursor(9, 1);
             lcd.print("       ");
             lcd.setCursor(9, 1);
             lcd.print("L2- ON");
             digitalWrite (RELAY , HIGH);
           }
-          if (average >= 80) {
+            if (average >= 80) {
             lcd.setCursor(9, 1);
             lcd.print("        ");
             lcd.setCursor(9, 1);
             lcd.print("L2- OFF");
-            
+
             digitalWrite (RELAY , LOW);
           }
             lcd.setCursor(0, 0);
@@ -180,7 +182,7 @@ void setup() {
             lcd.setCursor(0, 0);
             lcd.print("LDR-");
             lcd.print(average);
-            
+
 
 
 
@@ -195,7 +197,7 @@ void setup() {
             if (isnan(h) || isnan(t) || isnan(f)) {
             Serial.println("Failed to read from DHT sensor!");
             return;
-            
+
           }
 
             // Compute heat index in Fahrenheit (the default)
@@ -224,10 +226,5 @@ void setup() {
             lcd.print(t, 0); // print temperature
             lcd.print((char)223);
             lcd.print("C");
-           
+
           }
-            
-
-
-
-
